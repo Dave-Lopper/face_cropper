@@ -1,5 +1,8 @@
 venv/
+htmlcov/
 .vscode
 .env
 *.pyc
 .pytest_cache
+.coverage*
+.coveragerc
