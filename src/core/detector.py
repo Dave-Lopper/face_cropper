@@ -1,6 +1,8 @@
 import dlib
 from termcolor import colored
 
+from .. import DLIB_FACE_DETECTING_MIN_SCORE
+
 
 def detect(image: str, verbose: bool = False):
     """Detects faces on a given image using dlib and returns matches.
@@ -18,7 +20,7 @@ def detect(image: str, verbose: bool = False):
     detector = dlib.get_frontal_face_detector()
     img = dlib.load_rgb_image(image)
 
-    dets = detector(img, 1)
+    dets = detector.run(img, 1, DLIB_FACE_DETECTING_MIN_SCORE)[0]
     verbose and print(
         colored(
             f"Number of faces detected: {len(dets)}\n",
