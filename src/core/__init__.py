@@ -1,3 +1,3 @@
-from .cropper import detect
+from .cropper import crop
 
-__all__ = ['detect']
+__all__ = ['crop']
