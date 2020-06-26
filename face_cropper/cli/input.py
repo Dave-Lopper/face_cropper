@@ -3,8 +3,8 @@ import sys
 import click
 from termcolor import colored
 
-from src.core.cropper import crop
-from src.exceptions import AboveThresholdException, InvalidSavingPathException, NoFaceException
+from face_cropper.core.cropper import crop
+from face_cropper.exceptions import AboveThresholdException, InvalidSavingPathException, NoFaceException
 
 
 @click.command(name="crop")

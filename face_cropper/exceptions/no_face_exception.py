@@ -1,4 +1,4 @@
-from src import DLIB_FACE_DETECTING_MIN_SCORE
+from face_cropper.core import DLIB_FACE_DETECTING_MIN_SCORE
 
 
 class NoFaceException(Exception):

@@ -1,4 +1,4 @@
-from src import THRESHOLD_IMAGE_SIZE
+from face_cropper.core import THRESHOLD_IMAGE_SIZE
 
 
 class AboveThresholdException(Exception):

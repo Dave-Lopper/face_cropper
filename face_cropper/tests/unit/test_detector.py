@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 
-from src.core.detector import detect
+from face_cropper.core.detector import detect
 
 
 def test_detector_detects_no_face():

@@ -1,7 +1,7 @@
 import dlib
 
-from src.core.selector import select
-from src import THRESHOLD_IMAGE_SIZE
+from face_cropper.core.selector import select
+from face_cropper.core import THRESHOLD_IMAGE_SIZE
 
 
 def test_selector_selects_adequat_rectangle():

@@ -3,9 +3,9 @@ from pathlib import Path
 from PIL import Image
 import pytest
 
-from src import DLIB_FACE_DETECTING_MIN_SCORE, THRESHOLD_IMAGE_SIZE
-from src.core.cropper import crop
-from src.exceptions import AboveThresholdException, NoFaceException, InvalidSavingPathException
+from face_cropper.core import DLIB_FACE_DETECTING_MIN_SCORE, THRESHOLD_IMAGE_SIZE
+from face_cropper.core.cropper import crop
+from face_cropper.exceptions import AboveThresholdException, NoFaceException, InvalidSavingPathException
 
 
 def test_crop_function_crops_adequatly():

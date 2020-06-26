@@ -3,7 +3,7 @@ from pathlib import Path
 
 from click.testing import CliRunner
 
-from src.cli import crop_command
+from face_cropper.cli import crop_command
 
 
 valid_saving_path = os.path.join(

@@ -1,7 +1,7 @@
 import dlib
 from termcolor import colored
 
-from .. import DLIB_FACE_DETECTING_MIN_SCORE
+from face_cropper.core import DLIB_FACE_DETECTING_MIN_SCORE
 
 
 def detect(image: str, verbose: bool = False):
@@ -30,7 +30,7 @@ def detect(image: str, verbose: bool = False):
     detections = []
 
     # Avoiding circular imports
-    from src.cli.output import colored_detection_output
+    from face_cropper.cli.output import colored_detection_output
     for index, detection in enumerate(dets):
         detections.append(detection)
         verbose and print(colored(f"Detection {index + 1}:", "green"))

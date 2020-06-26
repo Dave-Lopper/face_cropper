@@ -1,6 +1,6 @@
 from termcolor import colored
 
-from .. import THRESHOLD_IMAGE_SIZE
+from face_cropper.core import THRESHOLD_IMAGE_SIZE
 
 
 def select(detections: list, verbose: bool = False):
@@ -42,7 +42,7 @@ def select(detections: list, verbose: bool = False):
         print(f"\n{colored('The biggest face on the provided image:', 'green')}")
 
         # Avoiding circular imports
-        from src.cli.output import colored_detection_output
+        from face_cropper.cli.output import colored_detection_output
         colored_detection_output(sorted_detections[0])
 
     return sorted_detections[0]
