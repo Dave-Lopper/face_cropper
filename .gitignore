@@ -4,7 +4,6 @@ htmlcov/
 .env
 *.pyc
 .pytest_cache
-.coverage*
 .coveragerc
 dist/
 build/

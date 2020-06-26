@@ -1,3 +1,5 @@
+
+[![PyPI version](https://badge.fury.io/py/face-cropper.svg)](https://badge.fury.io/py/face-cropper)
 # Face cropper
 
 Welcome to the face cropper module !  
