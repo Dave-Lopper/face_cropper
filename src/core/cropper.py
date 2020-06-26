@@ -4,6 +4,7 @@ import sys
 from PIL import Image
 
 from .. import THRESHOLD_IMAGE_SIZE
+from ..exceptions import AboveThresholdException, NoFaceException
 from .detector import detect
 from .selector import select
 
@@ -28,15 +29,15 @@ def crop(
     try:
         detections = detect(image_path, verbose)
     except RuntimeError:
-        sys.exit("File not found : please check on the provided image path.")
+        raise FileNotFoundError(
+            "File not found : please check on the provided image path."
+        )
     if len(detections) == 0:
-        sys.exit("No face has been detected on the provided image.")
+        raise NoFaceException
 
     selected_detection = select(detections, verbose)
     if selected_detection is None:
-        sys.exit(
-            f"The face has to be less than {THRESHOLD_IMAGE_SIZE}px * {THRESHOLD_IMAGE_SIZE}px maximum"
-        )
+        raise AboveThresholdException
 
     cropping_coordinates = (
         selected_detection.left(),
@@ -58,7 +59,7 @@ def crop(
                     )
                 )
             except FileNotFoundError:
-                sys.exit(
+                raise FileNotFoundError(
                     "Folder not found : please check on the provided saving path."
                 )
         return cropped_image
