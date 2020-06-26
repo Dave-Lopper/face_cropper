@@ -26,7 +26,8 @@ invalid_image_path = os.path.join(
 
 def test_crop_command_image_path_is_required():
     runner = CliRunner()
-    result = runner.invoke(crop_command, [f"--saving_path={valid_saving_path}"])
+    result = runner.invoke(crop_command,
+                           [f"--saving_path={valid_saving_path}"])
 
     assert result.exit_code == 2
     assert "Try 'crop --help' for help." in result.output
@@ -49,7 +50,7 @@ def test_crop_command_output_with_invalid_image_path():
                             f"--saving_path={valid_saving_path}"])
 
     assert result.exit_code == 1
-    assert "File not found : please check on the provided image path." in result.output
+    assert "File not found : please check on the provided image path." in result.output  # noqa: E501
 
 
 def test_crop_command_output_with_invalid_saving_path():
@@ -61,7 +62,7 @@ def test_crop_command_output_with_invalid_saving_path():
         ]
     )
     assert result.exit_code == 1
-    assert "Folder not found : please check on the provided saving path." in result.output
+    assert "Folder not found : please check on the provided saving path." in result.output  # noqa: E501
 
 
 def test_crop_command_output_non_verbose():
@@ -73,7 +74,7 @@ def test_crop_command_output_non_verbose():
         ]
     )
     assert result.exit_code == 0
-    assert f"Image correctly cropped and save in location : {valid_saving_path}" in result.output
+    assert f"Image correctly cropped and save in location : {valid_saving_path}" in result.output  # noqa: E501
 
 
 def test_crop_command_output_verbose():
@@ -98,7 +99,7 @@ def test_crop_command_output_verbose():
     assert "Height:" in result.output
     assert "Width:" in result.output
     assert "Area:" in result.output
-    assert f"Image correctly cropped and save in location : {valid_saving_path}" in result.output
+    assert f"Image correctly cropped and save in location : {valid_saving_path}" in result.output  # noqa: E501
 
 
 def test_crop_command_saves_cropped_image():

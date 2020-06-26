@@ -39,7 +39,9 @@ def select(detections: list, verbose: bool = False):
         )
     )
     if verbose:
-        print(f"\n{colored('The biggest face on the provided image:', 'green')}")
+        print(
+            f"\n{colored('The biggest face on the provided image:', 'green')}"
+        )
 
         # Avoiding circular imports
         from face_cropper.cli.output import colored_detection_output

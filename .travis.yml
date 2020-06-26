@@ -1,0 +1,15 @@
+language: python
+python: "3.7"
+install:
+    - pip install -r requirements.txt
+    - pip install flake8==3.7.9
+script:
+    - flake8 --exclude='.git,venv,dist'
+    - pytest
+deploy:
+  provider: pypi
+  username: __token__
+  password:
+    secure: c1ml0UWF7wzfithD00u1MKLjkP9fZJQnaFbPunL9lKE+3/dBpm5i65SssbdKh6oBJPW6B7/sqxU06SvdEnAJRdpFQYibFg2GfAhfJ+VFQ3RY85mMnubhJnnX0/J/OlpQDq0OH5SVLkrTF2UMq7cGmW46GwMeEGQGtq+xPhff6fFhazd3w59mxI8FOyxGVKov36KCbhopYpel4/3TBLtKl5WNF4v87reYNkTWCeVgw9v+Zb2sMWUN4EPn0vbaTzevdlu2HPR/TbPrKHWrZDQJeXtFMOv+AXF09uLIGXDoprHIni4fmHIzAVnAGzcrGTK0Mi8tdJvQ+GXhSk338hqmoDpxpg0onv6erRaitlPzSg3L0VPkYkoWggEd4RH0LlU8YysMJgUum1/YTj0W3P00OmGX/ktPEdgvo1VGwiYZU1ijNhyjbL/9ONdDO3KBcvR4VESnzCeRBFSzgXBPXO5Smt4Qfy0hLWCkFRrrbOKzJm9wUFGYIWB+HSkC/GwoO0A5+jNHD/erJp5CftWybPmmoon0eKxFwyFA8Cd+vpX+9JM0YVGcDTm2JYkqdK3hz4GNCQcnQ0cC+LNORAil9P7ZfzS+7KgEZaviBWiQOau/XrobDtSqHI53K1bnVenoS1A59mUmsdOl0ufTPXsUC/n6vMzR7fJcf0H6tGzqAYLLjew=
+  on:
+    tags: true

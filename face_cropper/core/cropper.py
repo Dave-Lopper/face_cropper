@@ -1,10 +1,10 @@
 import os
-import sys
 
 from PIL import Image
 
-from face_cropper.core import THRESHOLD_IMAGE_SIZE
-from ..exceptions import AboveThresholdException, InvalidSavingPathException, NoFaceException
+from ..exceptions import (AboveThresholdException,
+                          InvalidSavingPathException,
+                          NoFaceException)
 from .detector import detect
 from .selector import select
 

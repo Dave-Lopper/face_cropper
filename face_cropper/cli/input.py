@@ -4,7 +4,9 @@ import click
 from termcolor import colored
 
 from face_cropper.core.cropper import crop
-from face_cropper.exceptions import AboveThresholdException, InvalidSavingPathException, NoFaceException
+from face_cropper.exceptions import (AboveThresholdException,
+                                     InvalidSavingPathException,
+                                     NoFaceException)
 
 
 @click.command(name="crop")
@@ -39,7 +41,10 @@ def crop_command(
     try:
         crop(image_path, saving_path, verbose)
         print(
-            colored(f"Image correctly cropped and save in location : {saving_path}"))
+            colored(
+                f"Image correctly cropped and save in location : {saving_path}"
+            )
+        )
     except (AboveThresholdException, InvalidSavingPathException,
             NoFaceException, FileNotFoundError) as exception:
         if isinstance(exception, FileNotFoundError):
