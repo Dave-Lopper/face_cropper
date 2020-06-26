@@ -1,4 +1,7 @@
 import dlib
+from termcolor import colored
+
+from src.cli_output import colored_detection_output
 
 
 def detect(image: str, verbose: bool = False):
@@ -18,22 +21,15 @@ def detect(image: str, verbose: bool = False):
     img = dlib.load_rgb_image(image)
 
     dets = detector(img, 1)
-    verbose and print(f"Number of faces detected: {len(dets)}")
+    verbose and print(
+        colored(
+            f"Number of faces detected: {len(dets)}\n",
+            'yellow'
+        )
+    )
     detections = []
     for index, detection in enumerate(dets):
-        height = detection.bottom() - detection.top()
-        width = detection.right() - detection.left()
         detections.append(detection)
-        verbose and print(
-            f"""Detection {index}:
-  Coordinates:
-    Left: {detection.left()}
-    Right: {detection.right()}
-    Top: {detection.top()}
-    Bottom: {detection.bottom()}
-  Dimensions:
-    Detection height: {height}px
-    Detection width: {width}px
-    Detection area: {height * width}px"""
-        )
+        verbose and print(colored(f"Detection {index}:", 'green'))
+        verbose and colored_detection_output(detection)
     return detections

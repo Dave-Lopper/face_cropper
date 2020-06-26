@@ -1,4 +1,7 @@
+from termcolor import colored
+
 from .. import THRESHOLD_IMAGE_SIZE
+from ..cli_output import colored_detection_output
 
 
 def select(detections: list, verbose: bool = False):
@@ -37,16 +40,7 @@ def select(detections: list, verbose: bool = False):
         )
     )
     if verbose:
-        print()
-        print(
-            f"""The biggest face on the provided image:
-  Dimensions:
-    Height: {sorted_detections[0].bottom() - sorted_detections[0].top()}px
-    Width: {sorted_detections[0].right() - sorted_detections[0].left()}px
-  Coordinates:
-    Top: {sorted_detections[0].top()}
-    Bottom: {sorted_detections[0].bottom()}
-    Left: {sorted_detections[0].left()}
-    Right: {sorted_detections[0].right()}"""
-        )
+        print(f"\n{colored('The biggest face on the provided image:', 'green')}")
+        colored_detection_output(sorted_detections[0])
+
     return sorted_detections[0]
