@@ -4,7 +4,7 @@ import sys
 from PIL import Image
 
 from .. import THRESHOLD_IMAGE_SIZE
-from ..exceptions import AboveThresholdException, NoFaceException
+from ..exceptions import AboveThresholdException, InvalidSavingPathException, NoFaceException
 from .detector import detect
 from .selector import select
 
@@ -59,7 +59,5 @@ def crop(
                     )
                 )
             except FileNotFoundError:
-                raise FileNotFoundError(
-                    "Folder not found : please check on the provided saving path."
-                )
+                raise InvalidSavingPathException
         return cropped_image

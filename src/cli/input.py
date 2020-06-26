@@ -1,22 +1,26 @@
-import click
+import sys
 
-from ..core.cropper import crop
+import click
+from termcolor import colored
+
+from src.core.cropper import crop
+from src.exceptions import AboveThresholdException, InvalidSavingPathException, NoFaceException
 
 
 @click.command(name="crop")
 @click.option(
-    '--image_path',
-    help='Path to the image to be cropped.',
+    "--image_path",
+    help="Path to the image to be cropped.",
     required=True
 )
 @click.option(
-    '--saving_path',
-    help='If provided, cropped image will be saved in the provided location',
-    default=None
+    "--saving_path",
+    help="If provided, cropped image will be saved in the provided location",
+    required=True
 )
 @click.option(
-    '--verbose/--non-verbose',
-    help='Command should output informatio.',
+    "--verbose/--non-verbose",
+    help="Command should output informations.",
     default=False
 )
 def crop_command(
@@ -32,4 +36,12 @@ def crop_command(
     :param verbose: [description], defaults to False
     :type verbose: bool, optional
     """
-    crop(image_path, saving_path, verbose)
+    try:
+        crop(image_path, saving_path, verbose)
+        print(
+            colored(f"Image correctly cropped and save in location : {saving_path}"))
+    except (AboveThresholdException, InvalidSavingPathException,
+            NoFaceException, FileNotFoundError) as exception:
+        if isinstance(exception, FileNotFoundError):
+            sys.exit(colored(exception, "red"))
+        sys.exit(colored(exception.message, "red"))

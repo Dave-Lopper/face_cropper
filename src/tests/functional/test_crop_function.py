@@ -5,7 +5,7 @@ import pytest
 
 from src import DLIB_FACE_DETECTING_MIN_SCORE
 from src.core.cropper import crop
-from src.exceptions import NoFaceException
+from src.exceptions import NoFaceException, InvalidSavingPathException
 
 
 def test_crop_function_crops_adequatly():
@@ -63,8 +63,8 @@ def test_crop_function_crops_with_unexisting_file_raises_filenotfounderror():
         assert exception.message == "File not found : please check on the provided image path."
 
 
-def test_crop_function_crops_with_unexisting_saving_path_raises_filenotfounderror():
-    with pytest.raises(FileNotFoundError) as exception:
+def test_crop_function_crops_with_unexisting_saving_path_raises_invalid_savingpath_exception():
+    with pytest.raises(InvalidSavingPathException) as exception:
         crop(
             image_path=os.path.join(
                 Path(__file__).parent.absolute(),

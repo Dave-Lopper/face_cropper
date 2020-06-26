@@ -24,7 +24,7 @@ def detect(image: str, verbose: bool = False):
     verbose and print(
         colored(
             f"Number of faces detected: {len(dets)}\n",
-            'yellow'
+            "yellow"
         )
     )
     detections = []
@@ -33,6 +33,6 @@ def detect(image: str, verbose: bool = False):
     from src.cli.output import colored_detection_output
     for index, detection in enumerate(dets):
         detections.append(detection)
-        verbose and print(colored(f"Detection {index}:", 'green'))
+        verbose and print(colored(f"Detection {index + 1}:", "green"))
         verbose and colored_detection_output(detection)
     return detections

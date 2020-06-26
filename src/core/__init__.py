@@ -1,3 +1,3 @@
 from .cropper import crop
 
-__all__ = ['crop']
+__all__ = ["crop"]
