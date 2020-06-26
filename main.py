@@ -1,7 +1,7 @@
 import sys
 
-from src.core import crop
+from src.core import detect
 
 if __name__ == '__main__':
     # pylint: disable=no-value-for-parameter
-    crop()  # special case : Click command, args provided by CLI
+    detect()  # special case : Click command, args provided by CLI
