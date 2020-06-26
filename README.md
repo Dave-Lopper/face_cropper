@@ -1,5 +1,7 @@
 
 [![PyPI version](https://badge.fury.io/py/face-cropper.svg)](https://badge.fury.io/py/face-cropper)
+[![Build Status](https://travis-ci.com/Dave-Lopper/face_cropper_package.svg?branch=master)](https://travis-ci.com/Dave-Lopper/face_cropper_package)
+[![Coverage Status](https://coveralls.io/repos/github/Dave-Lopper/face_cropper/badge.svg?branch=master)](https://coveralls.io/github/Dave-Lopper/face_cropper?branch=master)
 # Face cropper
 
 Welcome to the face cropper module !  
