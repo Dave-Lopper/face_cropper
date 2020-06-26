@@ -26,7 +26,22 @@ from .selector import select
     default=False
 )
 def crop(image_path: str, saving_path: str = None, verbose: bool = False):
-    detections = detect(image_path, verbose)
+    """Crops an image to the largest face on it.
+
+    :param image_path: Path to access the image to be cropped
+    :type image_path: str
+    :param saving_path: Path to save the cropped image, defaults to None
+    :type saving_path: str, optional
+    :param verbose: [description], defaults to False
+    :type verbose: bool, optional
+
+    :return: The cropped image
+    :rtype: [PIL.Image.Image]
+    """
+    try:
+        detections = detect(image_path, verbose)
+    except RuntimeError:
+        sys.exit("File not found : please check on the provided image path.")
     if len(detections) == 0:
         sys.exit("No face has been detected on the provided image.")
 
@@ -48,10 +63,15 @@ def crop(image_path: str, saving_path: str = None, verbose: bool = False):
         filepath = os.path.basename(non_cropped_image.filename)
         filename, extension = os.path.splitext(filepath)
         if saving_path is not None:
-            cropped_image.save(
-                os.path.join(
-                    saving_path,
-                    f"{filename}_cropped{extension}"
+            try:
+                cropped_image.save(
+                    os.path.join(
+                        saving_path,
+                        f"{filename}_cropped{extension}"
+                    )
                 )
-            )
+            except FileNotFoundError:
+                sys.exit(
+                    "Folder not found : please check on the provided saving path."
+                )
         return cropped_image

@@ -12,7 +12,7 @@ def select(detections: list, verbose: bool = False):
     :param detections: List of detected faces on the provided image
     :type detections: [list of dlib.rectangle]
     :param verbose: Wether or not command should output informations
-    :type image: [bool], default to False
+    :type verbose: [bool], default to False
 
     :return: The biggest face detected
     :rtype: [dlib.rectangle], None if no image under our threshold size

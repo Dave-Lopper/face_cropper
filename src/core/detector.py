@@ -9,11 +9,14 @@ def detect(image: str, verbose: bool = False):
     :param verbose: Wether or not command should output informations
     :type image: [bool], default to False
 
+    :raises RuntimeError: When the provided image_path is invalid
+
     :return: The detected faces
     :rtype: [list of dlib.rectangle]
     """
     detector = dlib.get_frontal_face_detector()
     img = dlib.load_rgb_image(image)
+
     dets = detector(img, 1)
     verbose and print(f"Number of faces detected: {len(dets)}")
     detections = []
