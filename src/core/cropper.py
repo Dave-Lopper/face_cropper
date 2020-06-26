@@ -1,7 +1,6 @@
 import os
 import sys
 
-import click
 from PIL import Image
 
 from .. import THRESHOLD_IMAGE_SIZE
@@ -9,23 +8,11 @@ from .detector import detect
 from .selector import select
 
 
-@click.command()
-@click.option(
-    '--image_path',
-    help='Path to the image to be cropped.',
-    required=True
-)
-@click.option(
-    '--saving_path',
-    help='If provided, cropped image will be saved in the provided location',
-    default=None
-)
-@click.option(
-    '--verbose/--non-verbose',
-    help='Command should output informatio.',
-    default=False
-)
-def crop(image_path: str, saving_path: str = None, verbose: bool = False):
+def crop(
+    image_path: str,
+    saving_path: str = None,
+    verbose: bool = False
+):
     """Crops an image to the largest face on it.
 
     :param image_path: Path to access the image to be cropped

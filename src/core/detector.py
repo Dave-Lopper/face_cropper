@@ -1,8 +1,6 @@
 import dlib
 from termcolor import colored
 
-from src.cli_output import colored_detection_output
-
 
 def detect(image: str, verbose: bool = False):
     """Detects faces on a given image using dlib and returns matches.
@@ -28,6 +26,9 @@ def detect(image: str, verbose: bool = False):
         )
     )
     detections = []
+
+    # Avoiding circular imports
+    from src.cli.output import colored_detection_output
     for index, detection in enumerate(dets):
         detections.append(detection)
         verbose and print(colored(f"Detection {index}:", 'green'))
