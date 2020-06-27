@@ -16,7 +16,7 @@ This module will :
 
 ### Quickstart   
 ##### Use as a package ?
-- `pip install face-cropper==1.0`    
+- `pip install face-cropper`    
 ##### Use as a CLI ?     
 - Clone the repo   
 - `pip install -r requirements.txt`   
