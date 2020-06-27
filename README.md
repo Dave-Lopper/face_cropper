@@ -37,7 +37,8 @@ Simply import the ***crop*** function, and pass it the path of the image to be
 cropped as  ***image_path*** !   
 It is also possible to pass it another parameter, ***saving_path***, which if
 provided will make *face_croper* save the image in the provided location !   
-##### Example    
+#### Example    
+##### Minimal start
 ```python
 import os
 
@@ -57,3 +58,17 @@ cropped_image = crop(
     saving_path=os.getcwd()
 )
 ```   
+##### Being careful    
+```python
+import os
+
+from face_cropper import crop
+from face_cropper.exceptions import NoFaceException, AboveThresholdException
+
+try:
+    cropped_image = crop(
+        image_path=os.path.join(os.getcwd(), "my_image.jpg")
+    )
+except (NoFaceException, AboveThresholdException):
+    # Custom code right here
+```     
